@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  traefik:
+    image: traefik:v3.0
+    container_name: traefik
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "8088:80"
+      - "4438:443"
+      - "8080:8080"
+    volumes:
+      - ./traefik:/etc/traefik
+      - ./logs:/var/log/traefik
