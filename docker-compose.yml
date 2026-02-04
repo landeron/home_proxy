@@ -12,5 +12,6 @@ services:
       - "4438:443"
       - "8082:8080"
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik:/etc/traefik
       - ./logs:/var/log/traefik
