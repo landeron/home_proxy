@@ -10,7 +10,7 @@ services:
     ports:
       - "8088:80"
       - "4438:443"
-      - "8080:8080"
+      - "8082:8080"
     volumes:
       - ./traefik:/etc/traefik
       - ./logs:/var/log/traefik
