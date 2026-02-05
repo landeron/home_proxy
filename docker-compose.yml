@@ -7,6 +7,8 @@ services:
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
+    environment:
+      - TIMEWEB_API_TOKEN=${TIMEWEB_API_TOKEN}
     ports:
       - "8088:80"
       - "4438:443"
