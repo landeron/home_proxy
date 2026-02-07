@@ -10,8 +10,8 @@ services:
     environment:
       - TIMEWEB_API_TOKEN=${TIMEWEB_API_TOKEN}
     ports:
-      - "8088:80"
-      - "4438:443"
+      - "80:80"
+      - "443:443"
       - "8082:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
