@@ -8,7 +8,7 @@ services:
     security_opt:
       - no-new-privileges:true
     environment:
-      - TIMEWEB_API_TOKEN=${TIMEWEB_API_TOKEN}
+      - TIMEWEBCLOUD_AUTH_TOKEN=${TIMEWEBCLOUD_AUTH_TOKEN}
     ports:
       - "80:80"
       - "443:443"
