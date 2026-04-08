@@ -1,0 +1,42 @@
+api:
+  dashboard: true
+  insecure: true
+
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+  websecure:
+    address: ":443"
+
+accessLog:
+  filePath: "/var/log/traefik/access.log"
+  bufferingSize: 100
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+  file:
+    filename: "/etc/traefik/dynamic.yml"
+
+experimental:
+  plugins:
+    crowdsec:
+      moduleName: "github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
+      version: "v1.5.0"
+
+certificatesResolvers:
+  timewebcloud:
+    acme:
+      email: "dupavol@gmail.com"
+      storage: "/etc/traefik/ssl/timewebcloud.json"
+      dnsChallenge:
+        provider: "timewebcloud"
+        resolvers:
+          - "1.1.1.1:53"
+          - "8.8.8.8:53"
